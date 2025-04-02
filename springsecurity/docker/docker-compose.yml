@@ -1,0 +1,17 @@
+version: '3.8'  # Define a versão do docker-compose
+
+services:
+  mysql:
+    image: mysql:5.7  # Especificando uma versão do MySQL para garantir compatibilidade
+    ports:
+      - "3306:3306"  # Mapeando a porta 3306 do container para a 3306 do host
+    environment:
+      MYSQL_ROOT_PASSWORD: root         # Senha para o usuário root
+      MYSQL_USER: admin                 # Nome do usuário
+      MYSQL_PASSWORD: 123               # Senha para o usuário admin
+      MYSQL_DATABASE: mydb              # Nome do banco de dados a ser criado
+    volumes:
+      - mysql-data:/var/lib/mysql       # Persistência de dados entre reinícios do container
+
+volumes:
+  mysql-data:  # Definindo um volume para persistência de dados do MySQL
